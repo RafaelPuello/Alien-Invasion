@@ -4,6 +4,6 @@
 # Ignore directory named .pytest_cache/
 .pytest_cache
 
-# Ignore space image
-space.jpg
+# Ignore image folder
+images/
 

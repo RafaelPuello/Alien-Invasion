@@ -3,40 +3,22 @@
 try:
     import pygame
     import sys
-    import os
+    from settings import Settings
 
 except ImportError as error:
-    sys.exit("Couldn't loading module.  {}".format(error))
+    sys.exit("Couldn't load module.  {}".format(error))
 
 def main():
-    """ Set up screen and display """
-    
-    # Initialize screen
-    pygame.init()
-    screen = pygame.display.set_mode((550, 550))
-    pygame.display.set_caption("Space Invaders!")
+    """ Set up main loop for game """
 
-    # Create background
-    background = pygame.image.load("space.jpg")
-
-    # Display text
-    font = pygame.font.Font(None, 36)
-    text = font.render("Space Invaders!", 1, (10, 10, 10))
-    textpos = text.get_rect()
-    textpos.centerx = background.get_rect().centerx
-    textpos.centery = background.get_rect().centery
-    background.blit(text, textpos)
-
-    # Display everything on screen
-    screen.blit(background, (0, 0))
-    pygame.display.flip()
+    settings = Settings()
 
     # Main loop
     while True:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT: # pylint: disable=no-member
                 return
-        screen.blit(background, (0, 0))
+        settings.screen.blit(settings.background, (0, 0))
         pygame.display.flip()
 
 if __name__ == '__main__':
