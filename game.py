@@ -1,1 +1,4 @@
-"""Alien invasion game"""
+# Alien invasion game
+
+import sys, os
+import pygame 
