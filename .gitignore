@@ -1,0 +1,9 @@
+# Ignore directory named __pycache__
+ __pycache__/
+
+# Ignore directory named .pytest_cache/
+.pytest_cache
+
+# Ignore space image
+space.jpg
+
