@@ -1,19 +1,21 @@
-""" Main module for the Space Invasion game. """
+"""Main module for the Space Invasion game"""
 
 try:
-    import pygame
     import sys
+    import pygame
     from settings import Settings
+    from objects import Ship
 
 except ImportError as error:
     sys.exit("Couldn't load module.  {}".format(error))
+ 
 
 def main():
-    """ Set up main loop for game """
+    """Set up main loop for game"""
 
     settings = Settings()
+    ship = Ship(settings.screen)
 
-    # Main loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: # pylint: disable=no-member
