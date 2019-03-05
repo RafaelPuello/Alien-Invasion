@@ -8,17 +8,26 @@ def load_image(name):
     fullname = os.path.join('images', name)
     image = pygame.image.load(fullname)
     image = image.convert()
-    return image, image.get_rect()
+    return image
 
 
-class Ship(pygame.sprite.Sprite): # pylint: disable=too-few-public-methods
+class Ship(pygame.sprite.Sprite):
     """Class used for player spaceship"""
 
     def __init__(self, screen):
         """Initialize user spaceship"""
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_image("spaceship.png")
-
-
+        self.screen = screen
+        self.image = load_image("spaceship.bmp")
+        self.rect = self.image.get_rect(midbottom=(512, 750))
+ 
     def update(self):
         """Move the ship depending user input"""
+
+    def move_left(self):
+        """Move the user ship left if the player presses the left arrow key"""
+        self.rect.move_ip(-55, 0)
+
+    def move_right(self):
+        """Move the user ship right if the player presses the right arrow key"""
+        self.rect.move_ip(55, 0)

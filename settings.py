@@ -1,6 +1,5 @@
 """Module used to hold the settings for the game"""
 
-import sys
 import pygame
 
 class Settings(): # pylint: disable=too-few-public-methods
@@ -8,13 +7,12 @@ class Settings(): # pylint: disable=too-few-public-methods
 
     def __init__(self):
         """Initialize screen, display, and background"""
-        pygame.init()
-        self.screen = pygame.display.set_mode((1024, 682))
+        self.screen = pygame.display.set_mode((1024, 750))
         pygame.display.set_caption("Space Invaders")
-        
+
         # Create and blit background to screen
         self.background = pygame.Surface(self.screen.get_size())
-        self.background.fill((40, 40, 40))
+        self.background.fill((80, 80, 80))
         self.screen.blit(self.background, (0, 0))
 
         # Create title and blit to screen
