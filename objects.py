@@ -59,8 +59,8 @@ class Barrier(pygame.sprite.Sprite): # pylint: disable=too-few-public-methods
             self.rect.center = (900, 575)
 
 
-class Bullet(pygame.sprite.Sprite):
-    """Class used for bullets"""
+class Projectile(pygame.sprite.Sprite):
+    """Class used for projectiles"""
 
     def __init__(self, screen, ship):
         """Intialize bullet"""
@@ -72,13 +72,10 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.centerx = ship.rect.centerx
         self.rect.bottom = ship.rect.top
         self.vertical_pos = float(self.rect.y)
-        self.speed = 1
+        self.speed = 20
 
     def update(self):
-        """Update position of bullet"""
+        """Update position of projectile"""
+
         self.vertical_pos -= self.speed
         self.rect.y = self.vertical_pos
-
-    def draw_bullet(self):
-        """Blit bullet to screen"""
-        self.screen.blit(self.image, self.rect)
