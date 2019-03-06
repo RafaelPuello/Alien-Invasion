@@ -18,16 +18,57 @@ class Ship(pygame.sprite.Sprite):
         """Initialize user spaceship"""
         pygame.sprite.Sprite.__init__(self)
         self.screen = screen
+        self.screen_rect = screen.get_rect()
         self.image = load_image("spaceship.bmp")
         self.rect = self.image.get_rect(midbottom=(512, 750))
- 
+        self.moving_right = False
+        self.moving_left = False
+
     def update(self):
-        """Move the ship depending user input"""
+        """Updates the ship based on user input"""
+        if self.moving_left:
+            self.rect.move_ip(-15, 0)
+        
+        if self.moving_right:
+            self.rect.move_ip(15, 0)
+        self.rect.clamp_ip(self.screen_rect)
 
-    def move_left(self):
-        """Move the user ship left if the player presses the left arrow key"""
-        self.rect.move_ip(-55, 0)
+    def draw_ship(self):
+        """Blit ship to screen"""
+        self.screen.blit(self.image, self.rect)
 
-    def move_right(self):
-        """Move the user ship right if the player presses the right arrow key"""
-        self.rect.move_ip(55, 0)
+
+class Barrier(pygame.sprite.Sprite):
+    """Class used for green barrier for player"""
+
+    def __init__(self, screen, number=1):
+        """Intialize barrier"""
+        pygame.sprite.Sprite.__init__(self)
+        self.screen = screen
+        self.screen_rect = screen.get_rect()
+        self.image = load_image("barrier.bmp")
+        self.rect = self.image.get_rect()
+        if number == 1:
+            self.rect.center = (100, 575)
+        elif number == 2:
+            self.rect.center = (350, 575)
+        elif number == 3:
+            self.rect.center = (650, 575)
+        else:
+            self.rect.center = (900, 575)
+
+
+class Bullet(pygame.sprite.Sprite):
+    """Class used for bullets"""
+
+    def __init__(self, screen):
+        """Intialize bullet"""
+        pygame.sprite.Sprite.__init__(self)
+        self.scree_rect = screen.get_rect
+        self.image = load_image("bullet.bmp")
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        """Update position of bullet"""
+
+
