@@ -7,7 +7,7 @@ class Settings(): # pylint: disable=too-few-public-methods
 
     def __init__(self):
         """Initialize screen, display, and background"""
-        self.screen = pygame.display.set_mode((1024, 750))
+        self.screen = pygame.display.set_mode((550, 750))
         pygame.display.set_caption("Alien Invasion")
 
         # Create and blit background to screen
