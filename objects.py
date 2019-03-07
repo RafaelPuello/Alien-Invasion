@@ -19,8 +19,8 @@ class Ship(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.screen = screen
         self.screen_rect = screen.get_rect()
-        self.image = load_image("spaceship.bmp")
-        self.rect = self.image.get_rect(midbottom=(512, 750))
+        self.image = load_image("ship.bmp")
+        self.rect = self.image.get_rect(midbottom=(275, 700))
         self.speed = 1.5
         self.moving_right = False
         self.moving_left = False
