@@ -21,17 +21,16 @@ class Ship(pygame.sprite.Sprite):
         self.screen_rect = screen.get_rect()
         self.image = load_image("ship.bmp")
         self.rect = self.image.get_rect(midbottom=(275, 700))
-        self.speed = 1.5
         self.moving_right = False
         self.moving_left = False
 
     def update(self):
         """Updates the ship based on user input"""
         if self.moving_left:
-            self.rect.move_ip(-15*self.speed, 0)
+            self.rect.move_ip(-10, 0)
 
         if self.moving_right:
-            self.rect.move_ip(15*self.speed, 0)
+            self.rect.move_ip(10, 0)
         self.rect.clamp_ip(self.screen_rect)
 
     def draw_ship(self):
@@ -89,5 +88,9 @@ class Alien(pygame.sprite.Sprite):
         self.screen_rect = screen.get_rect()
         self.image = load_image("alien.bmp")
         self.rect = self.image.get_rect()
-        self.speed = 1.5
-        self.rect.center = (10, 100)
+        self.rect.center = (20, 100)
+        self.mode = "easy"
+        self.direction = -1
+
+    def update(self):
+        pass
