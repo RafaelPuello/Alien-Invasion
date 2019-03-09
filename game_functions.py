@@ -27,7 +27,7 @@ def check_events(screen, ship, projectiles):
             if event.key == K_LEFT:
                 ship.moving_left = True
             if  event.key == K_SPACE:
-                if len(projectiles) < 10: # Limit user projectiles
+                if len(projectiles) < 4: # Limit user projectiles
                     projectile = Projectile(ship)
                     projectiles.add(projectile)
         elif event.type == KEYUP:
@@ -42,10 +42,7 @@ def update_objects(ship, projectile, barriers):
 
 def update_screen(settings, ship, barriers, projectiles, aliens):
     """Function used to update the state of the screen"""
-    for projectile in projectiles.copy():
-        pygame.sprite.spritecollide(projectile, aliens, True)
-        if projectile.rect.bottom <= 0:
-            projectiles.remove(projectile)
+    pygame.sprite.groupcollide(projectiles, aliens, True, True)
     aliens.update()
     settings.screen.blit(settings.background, (0, 0))
     ship.draw_ship()

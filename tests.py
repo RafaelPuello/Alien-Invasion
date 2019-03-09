@@ -1,8 +1,7 @@
 """Module used for holding unit tests"""
 
 import pygame
-from objects import Ship
-from settings import Settings
+from objects import Ship, Settings
 
 class TestShipMethods():
     """Class used to test the various methods of the user controlled ship"""

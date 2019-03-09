@@ -11,6 +11,27 @@ def load_image(name):
     return image
 
 
+class Settings(): # pylint: disable=too-few-public-methods
+    """Class used to initialize the settings for the game"""
+
+    def __init__(self):
+        """Initialize screen, display, and background"""
+        self.screen = pygame.display.set_mode((550, 750))
+        pygame.display.set_caption("Alien Invasion")
+
+        # Create and blit background to screen
+        self.background = pygame.Surface(self.screen.get_size())
+        self.background.fill((0, 0, 0))
+        self.screen.blit(self.background, (0, 0))
+
+        # Create title and blit to screen
+        self.font = pygame.font.SysFont("futura", 36, bold=True)
+        self.text = self.font.render("Alien Invasion!", 1, (7, 183, 83))
+        self.textpos = self.text.get_rect(centerx=self.background.get_width()/2)
+        self.background.blit(self.text, self.textpos)
+        pygame.display.flip()
+
+
 class Ship(pygame.sprite.Sprite):
     """Class used for player spaceship"""
 
@@ -94,3 +115,21 @@ class Alien(pygame.sprite.Sprite):
 
     def update(self):
         pass
+
+
+class Score():
+    """Class used for score tallying"""
+
+    def __init__(self):
+        """Initialize the score"""
+        self.aliens_destroyed = []
+        self.ammo_used = []
+
+    def update(self, projectiles, aliens):
+        """Update the user's score"""
+        for projectile in projectiles.copy():
+            score_tally = pygame.sprite.spritecollide(projectile, aliens, False)
+            ammo_used = 1
+            if projectile.rect.bottom <= 0:
+                projectiles.remove(projectile)
+

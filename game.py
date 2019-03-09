@@ -3,8 +3,7 @@
 try:
     import sys
     import pygame
-    from settings import Settings
-    from objects import Ship, Barrier, Projectile, Alien
+    from objects import Ship, Barrier, Projectile, Alien, Settings
     from game_functions import (check_events, update_screen,
                                 update_objects, create_aliens)
 
