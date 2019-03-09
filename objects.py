@@ -110,11 +110,21 @@ class Alien(pygame.sprite.Sprite):
         self.image = load_image("alien.bmp")
         self.rect = self.image.get_rect()
         self.rect.center = (20, 100)
-        self.mode = "easy"
         self.direction = -1
+        self.speed = 1
+
+    def screen_check(self):
+        """Check if any alien has made it to the edge of the screen"""
+        if self.rect.right >= self.screen_rect.right or \
+            self.rect.left <= 0:
+            self.rect.x += self.direction * self.speed
 
     def update(self):
-        pass
+        self.rect.x += self.speed
+
+    def change_speed(self):
+        """Update speed depending on how many aliens are left"""
+
 
 
 class Score():
