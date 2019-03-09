@@ -18,19 +18,21 @@ class Settings(): # pylint: disable=too-few-public-methods
         """Initialize screen, display, and background"""
         self.screen = pygame.display.set_mode((550, 750))
         pygame.display.set_caption("Alien Invasion")
-
-        # Create and blit background to screen
         self.background = pygame.Surface(self.screen.get_size())
         self.background.fill((0, 0, 0))
         self.screen.blit(self.background, (0, 0))
+        pygame.display.flip()
 
-        # Create title and blit to screen
+    def set_menu(self):
+        """Display menu until user presses enter or spacebar"""
         self.font = pygame.font.SysFont("futura", 36, bold=True)
         self.text = self.font.render("Alien Invasion!", 1, (7, 183, 83))
         self.textpos = self.text.get_rect(centerx=self.background.get_width()/2)
         self.background.blit(self.text, self.textpos)
-        pygame.display.flip()
 
+    def set_game(self):
+        """Display game"""
+        pass
 
 class Ship(pygame.sprite.Sprite):
     """Class used for player spaceship"""

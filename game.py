@@ -14,7 +14,6 @@ def main():
     """Set up main loop for game"""
     pygame.init()
     clock = pygame.time.Clock()
-
     settings = Settings()
     screen = settings.screen
     ship = Ship(screen)
