@@ -5,8 +5,7 @@ try:
     import pygame
     from objects import Ship, Barrier, Settings
     from game_functions import (check_events, update_screen,
-                                update_objects, create_aliens,
-                                start_menu)
+                                update_objects, create_aliens)
 
 except ImportError as error:
     sys.exit("Couldn't load module.  {}".format(error))
@@ -25,7 +24,7 @@ def main():
 
     while True:
         check_events(screen, ship, projectiles)
-        update_objects(ship, projectiles, barriers)
+        update_objects(ship, projectiles, barriers, aliens)
         update_screen(settings, ship, barriers, projectiles, aliens)
         clock.tick(60)
 
