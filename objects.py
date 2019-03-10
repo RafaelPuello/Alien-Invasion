@@ -21,6 +21,9 @@ class Settings(): # pylint: disable=too-few-public-methods
         self.background = pygame.Surface(self.screen.get_size())
         self.background.fill((0, 0, 0))
         self.screen.blit(self.background, (0, 0))
+        self.font = 0
+        self.text = 0
+        self.textpos = 0
         pygame.display.flip()
 
     def set_menu(self):
@@ -32,7 +35,7 @@ class Settings(): # pylint: disable=too-few-public-methods
 
     def set_game(self):
         """Display game"""
-        pass
+        return
 
 class Ship(pygame.sprite.Sprite):
     """Class used for player spaceship"""
@@ -122,6 +125,7 @@ class Alien(pygame.sprite.Sprite):
             self.rect.x += self.direction * self.speed
 
     def update(self):
+        """Move the alien whenever called"""
         self.rect.x += self.speed
 
     def change_speed(self):
@@ -140,8 +144,7 @@ class Score():
     def update(self, projectiles, aliens):
         """Update the user's score"""
         for projectile in projectiles.copy():
-            score_tally = pygame.sprite.spritecollide(projectile, aliens, False)
-            ammo_used = 1
+            self.aliens_destroyed = pygame.sprite.spritecollide(projectile, aliens, False)
+            self.ammo_used = 1
             if projectile.rect.bottom <= 0:
                 projectiles.remove(projectile)
-

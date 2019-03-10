@@ -16,6 +16,16 @@ def create_aliens(screen):
             aliens.add(alien)
     return aliens
 
+def start_menu():
+    """Function used to start menu"""
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            sys.exit()
+        elif event.type == KEYDOWN:
+            if event.key == K_SPACE or event.key == K_RETURN:
+                return False
+        return True
+
 def check_events(screen, ship, projectiles):
     """Function used to check for user inputs"""
     for event in pygame.event.get():

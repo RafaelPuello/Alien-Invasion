@@ -3,9 +3,10 @@
 try:
     import sys
     import pygame
-    from objects import Ship, Barrier, Projectile, Alien, Settings
+    from objects import Ship, Barrier, Settings
     from game_functions import (check_events, update_screen,
-                                update_objects, create_aliens)
+                                update_objects, create_aliens,
+                                start_menu)
 
 except ImportError as error:
     sys.exit("Couldn't load module.  {}".format(error))
@@ -20,7 +21,7 @@ def main():
     aliens = create_aliens(screen)
     projectiles = pygame.sprite.Group()
     barriers = pygame.sprite.Group(Barrier(screen, 1), Barrier(screen, 2),
-                                  Barrier(screen, 3), Barrier(screen, 4))
+                                   Barrier(screen, 3), Barrier(screen, 4))
 
     while True:
         check_events(screen, ship, projectiles)

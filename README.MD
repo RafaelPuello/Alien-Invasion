@@ -15,4 +15,8 @@ The game is pretty straight forward.  The user is able to control the ship at th
   * Game currently doesn't support window resizing
   * Barrier needs to be able to accept damage
   * Different Alien types need to be added
+  * Added better images for the sprites
+  * Sound needs to be added to the game
+  * The user should be given 3 lives
+  * Main menu should be distinct from actual gameplay screen
   
