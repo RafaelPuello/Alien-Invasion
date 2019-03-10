@@ -10,13 +10,8 @@ def load_image(name):
     image = image.convert()
     return image
 
-
 class Settings(): # pylint: disable=too-few-public-methods
     """Class used to initialize the settings for the game"""
-
-    font = pygame.font.SysFont("futura", 36, bold=True)
-    text = font.render("Alien Invasion!", 1, (7, 183, 83))
-    text_position = text.get_rect(centerx=background.get_width()/2)
 
     def __init__(self):
         """Initialize screen, display, and background"""
@@ -24,6 +19,9 @@ class Settings(): # pylint: disable=too-few-public-methods
         pygame.display.set_caption("Alien Invasion")
         self.background = pygame.Surface(self.screen.get_size())
         self.background.fill((0, 0, 0))
+        self.font = pygame.font.SysFont("futura", 36, bold=True)
+        self.text = self.font.render("Alien Invasion!", 1, (7, 183, 83))
+        self.text_position = self.text.get_rect(centerx=self.background.get_width()/2)
         self.screen.blit(self.background, (0, 0))
         pygame.display.flip()
 

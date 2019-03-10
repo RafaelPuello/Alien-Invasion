@@ -53,7 +53,7 @@ def update_objects(ship, projectiles, barriers, aliens):
         if alien.screen_check():
             Alien.direction *= -1
             for alien in aliens.sprites():
-                alien.rect.y += 10
+                alien.rect.y += 5
     pygame.sprite.groupcollide(projectiles, aliens, True, True)
     ship.update()
     projectiles.update()
