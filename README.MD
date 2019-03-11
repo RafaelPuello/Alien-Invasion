@@ -6,7 +6,7 @@ from above.  I hope to use this beginner project as a fun way to improve my codi
 
 The game is pretty straight forward.  The user is able to control the ship at the bottom of the screen and must destroy the alien fleet.  The user is awarded for the amount of aliens they are able to destroy and penalized for the amount of ammo they use during the course of the game. There are a total of 3 alien fleets that will invade and a special enemy that will spawn if all three alien fleets are destroyed.  The user's score will display after the game session has ended.
 
-![Current State](https://github.com/RafaelPuello/Alien-Invasion/tree/master/images/CurrentState.bmp "Screenshot of Game")
+![](images/CurrentState.png "Screenshot of Game")
 
 ## Built With
 [pygame](https://www.pygame.org/news) - The gaming framework used to build this game.
