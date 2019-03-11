@@ -3,7 +3,7 @@
 try:
     import sys
     import pygame
-    from objects import Ship, Barrier, Settings
+    from objects import Ship, Barrier, Settings, Score
     from game_functions import (check_events, update_screen,
                                 update_objects, create_aliens)
 
@@ -21,11 +21,12 @@ def main():
     projectiles = pygame.sprite.Group()
     barriers = pygame.sprite.Group(Barrier(screen, 1), Barrier(screen, 2),
                                    Barrier(screen, 3), Barrier(screen, 4))
+    score = Score()
 
     while True:
         check_events(screen, ship, projectiles)
-        update_objects(ship, projectiles, barriers, aliens)
-        update_screen(settings, ship, barriers, projectiles, aliens)
+        update_objects(ship, projectiles, barriers, aliens, score)
+        update_screen(settings, ship, barriers, projectiles, aliens, score)
         clock.tick(60)
 
 if __name__ == '__main__':

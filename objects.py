@@ -135,11 +135,19 @@ class Score():
     def __init__(self):
         """Initialize the score"""
         self.aliens_destroyed = []
+        self.font = pygame.font.SysFont("futura", 24, True)
+        self.text = self.font.render("Score: ", 1, (7, 183, 83))
+        self.score_text = self.font.render("{}".format(Score.ammo_used), 1, (100, 100, 100))
+        self.text_position = self.text.get_rect(bottomleft=(10,740))
+        self.score_position = self.score_text.get_rect(bottomleft=(100, 740))
 
     def update(self, projectiles, aliens):
         """Update the user's score"""
         for projectile in projectiles.copy():
             self.aliens_destroyed.append(pygame.sprite.spritecollide(projectile, aliens, False))
             Score.ammo_used += 1
-            if projectile.rect.bottom <= 0:
-                projectiles.remove(projectile)
+
+    def draw(self, settings):
+        """Draw the score on the screen"""
+        settings.background.blit(self.text, self.text_position)
+        settings.background.blit(self.score_text, self.score_position)

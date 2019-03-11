@@ -44,7 +44,7 @@ def check_events(screen, ship, projectiles):
             ship.moving_right = False
             ship.moving_left = False
 
-def update_objects(ship, projectiles, barriers, aliens):
+def update_objects(ship, projectiles, barriers, aliens, score):
     """Function used to update the state of the objects"""
     for projectile in projectiles.sprites():
         if projectile.rect.bottom <= 0:
@@ -54,17 +54,23 @@ def update_objects(ship, projectiles, barriers, aliens):
             Alien.direction *= -1
             for alien in aliens.sprites():
                 alien.rect.y += 5
+    if len(aliens) <= 35 and len(aliens) > 20:
+        Alien.speed = 2
+    elif len(aliens) <= 20:
+        Alien.speed = 3
     pygame.sprite.groupcollide(projectiles, aliens, True, True)
     ship.update()
     projectiles.update()
     barriers.update()
     aliens.update()
+    score.update(projectiles, aliens)
 
-def update_screen(settings, ship, barriers, projectiles, aliens):
+def update_screen(settings, ship, barriers, projectiles, aliens, score):
     """Function used to update the screen"""
     settings.screen.blit(settings.background, (0, 0))
     ship.draw_ship()
     barriers.draw(settings.screen)
     aliens.draw(settings.screen)
     projectiles.draw(settings.screen)
+    score.draw(settings)
     pygame.display.flip()

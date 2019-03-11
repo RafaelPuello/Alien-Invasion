@@ -11,7 +11,7 @@ The game is pretty straight forward.  The user is able to control the ship at th
 
 ## Issues
   * Scoring needs to be implemented
-  * Alien movement needs to be fixed 
+  * Alien movement needs to be fixed
   * Game currently doesn't support window resizing
   * Barrier needs to be able to accept damage
   * Different Alien types need to be added
